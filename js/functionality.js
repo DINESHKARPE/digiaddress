@@ -204,7 +204,7 @@ addapp.controller('findControl', function($scope, $http){
         $(window).load(function (){
             resmap = new google.maps.Map(document.getElementById('map'), {
                 zoom: 5,
-                center: {lat: 24.122681, lng: 76.4269941}
+                center: {lat: 37.387474, lng: -122.05754339999999}
             });
             geocoder = new google.maps.Geocoder();
         });
@@ -236,7 +236,7 @@ addapp.controller('findControl', function($scope, $http){
                         $scope.qrcode = false;
                         $scope.adderror = "Digital Address not found";
                         resmap.setZoom(5);
-                        resmap.setCenter(new google.maps.LatLng(24.122681, 76.4269941));
+                        resmap.setCenter(new google.maps.LatLng(37.387474, -122.05754339999999));
                     }
                     else if (response.data.latlong)
                     {
@@ -268,13 +268,6 @@ addapp.controller('findControl', function($scope, $http){
             });
     };
 
-    $scope.printQR = function(printbody) {
-        console.log("in print");
-        var printContents = document.getElementById(printbody).innerHTML;
-        var printWindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
-        printWindow.document.open();
-        printWindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + printContents + '</html>');
-        printWindow.document.close();
-    };
+
 
 });

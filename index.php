@@ -15,7 +15,10 @@
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
     <script src="js/functionality.js">
     </script>
     <style>
@@ -32,29 +35,15 @@
     <title>Digital Address</title>
 </head>
 <body ng-app="indexApp" ng-controller="digiAddressGenerator">
-<nav class="navbar navbar-expand-lg navbar-primary navbar-color">
-    <a class="navbar-brand text-color" href="#">Generate Digital Address</a>
-    <button class="navbar-toggler btn-warning" type="button" data-toggle="collapse" data-target="#navbarText"
-            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                          <a class="nav-link text-color" href="findaddress.php">Find Address</a>
-                        </li>
-        </ul>
-    </div>
-</nav>
+
 <div class="container">
-
-
+    <label>Generate Digital Address</label>
     <div class="row row-allign">
         <div class="col-sm-4">
-            <!-- <center> -->
+
             <div class="form-border spacing-top">
                 <div class="card-header" style="background:#cc0001; color:#ffff">
-                    <center><h5>Enter Address</h5></center>
+                    <h5>Enter Address</h5>
                 </div>
                 <div class="extra-padding">
 
@@ -90,7 +79,7 @@
                             <div class="">
                                 <div class="form-group input-group-sm">
                                     <label for="town">Town</label>
-                                    <input type="text" class="form-control rounded-0 textbox-border textbox-depth"
+                                    <input type="text" class="form-control rounded-0 textbox-border "
                                            id="town" placeholder="" ng-model="address.town"
                                            ng-blur="geocodeAddress(address,'town')" required=""/>
                                 </div>
@@ -121,17 +110,9 @@
                 </div>
             </div>
             <br>
-            <div class="p-1 mb-2 bg-danger text-white border border-white" ng-show="">
-                <h4>
-                    <center ng-bind="myWelcome.value1"></center>
-                </h4>
-            </div>
-            <!-- </center> -->
         </div>
         <div class="col-sm-8 map-align" ng-init="initMap()">
             <div id="map" class="extra-padding"></div>
-            <div class="alert alert-color rounded-0" id="lt" ng-show="latlong" ng-model="lt"></div>
-            <div class="alert alert-color rounded-0" id="padd" ng-show="addr" ng-model="padd"></div>
         </div>
 
     </div>
@@ -156,7 +137,6 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-<!--                    <button type="button" class="btn btn-primary" ng-click="printQR('printbody')">Print</button>-->
                 </div>
             </div>
         </div>
