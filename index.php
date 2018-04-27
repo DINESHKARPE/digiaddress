@@ -41,13 +41,13 @@
                     <form ng-submit="processForm()" class="custom-form">
                         <div class="">
                             <div class="form-group input-group-sm">
-                                <label for="sector">State</label>
+                                <label for="state">State</label>
                                 <input type="text" class="form-control rounded-0 textbox-border" id="state"
                                        placeholder="" ng-model="address.state"
                                        ng-blur="geocodeAddress(address,'state')" required=""/>
                             </div>
                             <div class="form-group input-group-sm">
-                                <label for="inputZip" class="animated-label">Zip</label>
+                                <label for="zip" class="animated-label">Zip</label>
                                 <input type="text" class="form-control rounded-0 textbox-depth textbox-border"
                                        id="zip" ng-model="address.zip"
                                        ng-blur="geocodeAddress(address,'zip')" required=""/>
@@ -65,10 +65,10 @@
                                        ng-blur="geocodeAddress(address,'town')" required=""/>
                             </div>
                             <div class="form-group input-group-sm">
-                                <label for="housenumber">House</label>
-                                <input type="text" class="form-control rounded-0 textbox-border" id="housenumber"
-                                       placeholder="" ng-model="address.housenumber"
-                                       ng-blur="geocodeAddress(address,'housenumber')" required=""/>
+                                <label for="house">House</label>
+                                <input type="text" class="form-control rounded-0 textbox-border" id="house"
+                                       placeholder="" ng-model="address.house"
+                                       ng-blur="geocodeAddress(address,'house')" required=""/>
                             </div>
                             <div class="form-group input-group-sm">
                                 <input type="hidden" ng-model="address.lat"/>
