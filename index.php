@@ -5,15 +5,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXtUgIJI39fpYsM2y2FwAs0KynuS_qmP8">
     </script>
@@ -22,6 +17,13 @@
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
     <script src="js/functionality.js"/>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 
     <title>Digital Address</title>
 </head>
@@ -39,7 +41,6 @@
                 <div class="extra-padding">
 
                     <form ng-submit="processForm()" class="custom-form">
-                        <div class="">
                             <div class="form-group input-group-sm">
                                 <label for="state">State</label>
                                 <input type="text" class="form-control rounded-0 textbox-border" id="state"
@@ -79,7 +80,6 @@
                             <button type="submit" class="btn btn-color btn-block rounded-0"
                                     style="color:#ffff;background-color: #cc0001;">Verify
                             </button>
-                        </div>
                     </form>
                 </div>
             </div>
