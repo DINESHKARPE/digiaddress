@@ -19,9 +19,6 @@ app.controller('digiAddressGenerator', function ($scope, $http) {
                 center: {lat: 37.387474, lng: -122.05754339999999}
             });
             geocoder = new google.maps.Geocoder();
-            resmap.addListener('click', function (event) {
-                addMarker(event.latLng);
-            });
         });
 
     };
@@ -60,7 +57,7 @@ app.controller('digiAddressGenerator', function ($scope, $http) {
     }
 
     /**
-     *  invoked after lost focus from  html attributed files send address and filed two parameter
+     *  invoked after lost focus from  html attributed files
      * @param address
      * @param field
      */
@@ -84,6 +81,25 @@ app.controller('digiAddressGenerator', function ($scope, $http) {
                     else
                         add = add + ',' + arr[i].toString();
                 }
+
+                var fullAddress = "";
+
+                if (!address ['house']) {
+                    fullAddress = address ['house'] + ",";
+                }
+                if (address ['town']) {
+                    fullAddress = fullAddress + address ['town'] + ",";
+                }
+                if (address ['street']) {
+                    fullAddress = fullAddress + address ['street'] + ",";
+                }
+                if (address ['state']) {
+                    fullAddress = fullAddress + address ['state'] + " ";
+                }
+                if (address ['zip']) {
+                    fullAddress = fullAddress + address ['zip'];
+                }
+                console.log("address: " + fullAddress);
                 /**
                  *  invoked Post method with geoimplement.php , geoimplement.php return address latlong  and geo location geometry area,
                  *
@@ -97,7 +113,7 @@ app.controller('digiAddressGenerator', function ($scope, $http) {
                  *  "place_id":"ChIJGSZubzgtC4gRVlkRZFCCFX8",
                  *  "types":["administrative_area_level_1","political"]}
                  */
-                if (add !== add1) {
+                if (add !== "") {
                     $http({
                         method: 'POST',
                         url: 'geoimplement.php',
@@ -107,7 +123,7 @@ app.controller('digiAddressGenerator', function ($scope, $http) {
                     }).then(function successCallback(results) {
 
                         if (results.data !== "false") {
-                            console.log(results);
+                            // console.log(results);
                             removeMarker();
                             removeRectangle();
 
@@ -298,7 +314,4 @@ addapp.controller('findControl', function($scope, $http){
                 console.log(response.statusText);
             });
     };
-
-
-
 });
