@@ -177,12 +177,11 @@ app.controller('digiAddressGenerator', function ($scope, $http) {
                 else if (response.data.status) {
                     digiadd = response.data.status;
                     $scope.digiaddlabel = response.data.status;
-                    $scope.pincode = null;
-                    $scope.sector = null;
+                    $scope.state = null;
+                    $scope.zip = null;
                     $scope.street = null;
-                    $scope.landmark = null;
-                    $scope.bhname = null;
-                    $scope.hfno = null;
+                    $scope.town = null;
+                    $scope.house = null;
 
                     $scope.digiadd = digiadd;
                     $('#exampleModalCenter').modal('show');
