@@ -25,7 +25,7 @@
 
     <title>Digital Address</title>
 </head>
-<body ng-app="indexApp" ng-controller="digiAddressGenerator">
+<body ng-app="digitalAddressApp" ng-controller="digiAddressGenerator">
 
 <div class="container">
     <label>Generate Digital Address</label>
