@@ -1,37 +1,28 @@
 <!doctype html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-    <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXtUgIJI39fpYsM2y2FwAs0KynuS_qmP8">
-    </script>
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 
-    <script src="js/functionality.js">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXtUgIJI39fpYsM2y2FwAs0KynuS_qmP8">
     </script>
-    <style>
-        #map {
-            height: 100%;
-            margin-bottom: 15px;
-        }
 
-        .btn-color {
-            background-color: #cc0001;
-        }
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
-    </style>
+    <script src="js/functionality.js"/>
+
     <title>Digital Address</title>
 </head>
 <body ng-app="indexApp" ng-controller="digiAddressGenerator">
@@ -49,61 +40,44 @@
 
                     <form ng-submit="processForm()" class="custom-form">
                         <div class="">
-
-
-                            <div class="">
-                                <div class="form-group input-group-sm">
-                                    <label for="sector">State</label>
-                                    <input type="text" class="form-control rounded-0 textbox-border" id="state"
-                                           placeholder="" ng-model="address.state"
-                                           ng-blur="geocodeAddress(address,'state')" required=""/>
-                                </div>
+                            <div class="form-group input-group-sm">
+                                <label for="sector">State</label>
+                                <input type="text" class="form-control rounded-0 textbox-border" id="state"
+                                       placeholder="" ng-model="address.state"
+                                       ng-blur="geocodeAddress(address,'state')" required=""/>
                             </div>
-                            <div class="">
-                                <div class="form-group input-group-sm">
-                                    <label for="inputZip" class="animated-label">Zip</label>
-                                    <input type="text" class="form-control rounded-0 textbox-depth textbox-border"
-                                           id="zip" ng-model="address.zip"
-                                           ng-blur="geocodeAddress(address,'zip')" required=""/>
-                                </div>
+                            <div class="form-group input-group-sm">
+                                <label for="inputZip" class="animated-label">Zip</label>
+                                <input type="text" class="form-control rounded-0 textbox-depth textbox-border"
+                                       id="zip" ng-model="address.zip"
+                                       ng-blur="geocodeAddress(address,'zip')" required=""/>
                             </div>
-                            <div class="">
-                                <div class="form-group input-group-sm">
-                                    <label for="street">Street</label>
-                                    <input type="text" class="form-control rounded-0 textbox-border" id="street"
-                                           placeholder="" ng-model="address.street"
-                                           ng-blur="geocodeAddress(address,'street')" required=""/>
-                                </div>
+                            <div class="form-group input-group-sm">
+                                <label for="street">Street</label>
+                                <input type="text" class="form-control rounded-0 textbox-border" id="street"
+                                       placeholder="" ng-model="address.street"
+                                       ng-blur="geocodeAddress(address,'street')" required=""/>
                             </div>
-
-                            <div class="">
-                                <div class="form-group input-group-sm">
-                                    <label for="town">Town</label>
-                                    <input type="text" class="form-control rounded-0 textbox-border "
-                                           id="town" placeholder="" ng-model="address.town"
-                                           ng-blur="geocodeAddress(address,'town')" required=""/>
-                                </div>
+                            <div class="form-group input-group-sm">
+                                <label for="town">Town</label>
+                                <input type="text" class="form-control rounded-0 textbox-border "
+                                       id="town" placeholder="" ng-model="address.town"
+                                       ng-blur="geocodeAddress(address,'town')" required=""/>
                             </div>
-
-                            <div class="">
-                                <div class="form-group input-group-sm">
-                                    <label for="housenumber">House</label>
-                                    <input type="text" class="form-control rounded-0 textbox-border" id="housenumber"
-                                           placeholder="" ng-model="address.housenumber"
-                                           ng-blur="geocodeAddress(address,'housenumber')" required=""/>
-                                </div>
+                            <div class="form-group input-group-sm">
+                                <label for="housenumber">House</label>
+                                <input type="text" class="form-control rounded-0 textbox-border" id="housenumber"
+                                       placeholder="" ng-model="address.housenumber"
+                                       ng-blur="geocodeAddress(address,'housenumber')" required=""/>
                             </div>
-                            <div class="">
-                                <div class="form-group input-group-sm">
-                                    <input type="hidden" ng-model="address.lat"/>
-                                </div>
+                            <div class="form-group input-group-sm">
+                                <input type="hidden" ng-model="address.lat"/>
                             </div>
-                            <div class="">
-                                <div class="form-group input-group-sm">
-                                    <input type="hidden" ng-model="address.long"/>
-                                </div>
+                            <div class="form-group input-group-sm">
+                                <input type="hidden" ng-model="address.long"/>
                             </div>
-                            <button type="submit" class="btn btn-color btn-block rounded-0" style="color:#ffff">Verify
+                            <button type="submit" class="btn btn-color btn-block rounded-0"
+                                    style="color:#ffff;background-color: #cc0001;">Verify
                             </button>
                         </div>
                     </form>
@@ -112,7 +86,8 @@
             <br>
         </div>
         <div class="col-sm-8 map-align" ng-init="initMap()">
-            <div id="map" class="extra-padding"></div>
+            <div id="map" class="extra-padding" style="height: 100%;
+            margin-bottom: 15px;"></div>
         </div>
 
     </div>
