@@ -8,7 +8,7 @@ var lat, long;
 var latlong;
 
 
-var app = angular.module('indexApp', []);
+var app = angular.module('digitalAddressApp', []);
 
 app.controller('digiAddressGenerator', function ($scope, $http) {
 
