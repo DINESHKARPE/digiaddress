@@ -59,23 +59,44 @@ app.controller('digiAddressGenerator', function ($scope, $http) {
         }
     }
 
-
+    /**
+     *  invoked after lost focus from  html attributed files send address and filed two parameter
+     * @param address
+     * @param field
+     */
     $scope.geocodeAddress = function (address, field) {
+
         if (address[field]) {
+
             if (address !== null) {
+
                 var add = "";
                 var arr = [];
+
                 for (var key in address) {
-                    // add hasOwnPropertyCheck if needed
                     if (key !== 'lat' && key !== 'long')
                         arr.push(address[key].toString());
                 }
+
                 for (var i = arr.length - 1; i >= 0; i--) {
                     if (add === "")
                         add = arr[i].toString();
                     else
                         add = add + ',' + arr[i].toString();
                 }
+                /**
+                 *  invoked Post method with geoimplement.php , geoimplement.php return address latlong  and geo location geometry area,
+                 *
+                 *  {"address_components":[{"long_name":"Illinois","short_name":"IL","types":["administrative_area_level_1","political"]},
+                 *  {"long_name":"United States","short_name":"US","types":["country","political"]}],
+                 *  "formatted_address":"Illinois, USA",
+                 *  "geometry":{"bounds":{"northeast":{"lat":42.5083379,"lng":-87.019935},"southwest":{"lat":36.970298,"lng":-91.5130789}},
+                 *  "location":{"lat":40.6331249,"lng":-89.3985283},
+                 *  "location_type":"APPROXIMATE",
+                 *  "viewport":{"northeast":{"lat":42.5083379,"lng":-87.019935},"southwest":{"lat":36.970298,"lng":-91.5130789}}},
+                 *  "place_id":"ChIJGSZubzgtC4gRVlkRZFCCFX8",
+                 *  "types":["administrative_area_level_1","political"]}
+                 */
                 if (add !== add1) {
                     $http({
                         method: 'POST',
@@ -84,41 +105,52 @@ app.controller('digiAddressGenerator', function ($scope, $http) {
                         headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
                     }).then(function successCallback(results) {
+
                         if (results.data !== "false") {
                             console.log(results);
                             removeMarker();
                             removeRectangle();
+
                             $scope.address.lat = lat;
                             $scope.address.long = long;
+
                             lat = results.data.geometry.location.lat;
                             long = results.data.geometry.location.lng;
-                            console.log("Latitude:" + lat + "Longitude:" + long);
+
                             marker = new google.maps.Marker({
                                 map: resmap,
                                 position: results.data.geometry.location
                             });
+
                             myEl = angular.element(document.querySelector('#lt'));
-                            myEl.html("GeoCoordinate: " + lat + "," + long);
+                            myEl.html("Geo Coordinate: " + lat + "," + long);
+
                             $scope.latlong = true;
                             myEl = angular.element(document.querySelector('#padd'));
-                            myEl.html("GeoAddress: " + add);
+                            myEl.html("Geo Address: " + add);
+
                             $scope.addr = true;
+                            console.log(JSON.stringify(results.data));
+
                             if (results.data.geometry.viewport) {
+
                                 rectangle = new google.maps.Rectangle({
                                     strokeColor: '#FF0000',
                                     strokeOpacity: 0.8,
-                                    strokeWeight: 2,
+                                    strokeWeight: 0.5,
                                     fillColor: '#FF0000',
                                     fillOpacity: 0.35,
                                     map: resmap,
                                     bounds: {
-                                        north: results.data.geometry.viewport.northeast.lat, //19.185108,
-                                        south: results.data.geometry.viewport.southwest.lat, //19.1251106,
-                                        east: results.data.geometry.viewport.northeast.lng, //72.94776869999998,
-                                        west: results.data.geometry.viewport.southwest.lng//72.88884499999995
+                                        north: results.data.geometry.viewport.northeast.lat,
+                                        south: results.data.geometry.viewport.southwest.lat,
+                                        east: results.data.geometry.viewport.northeast.lng,
+                                        west: results.data.geometry.viewport.southwest.lng
                                     }
                                 });
+
                                 resmap.setCenter(new google.maps.LatLng(lat, long));
+
                                 var googleBounds = new google.maps.LatLngBounds(results.data.geometry.viewport.southwest, results.data.geometry.viewport.northeast);
 
                                 resmap.fitBounds(googleBounds);
@@ -196,7 +228,7 @@ app.controller('digiAddressGenerator', function ($scope, $http) {
 });
 
 
-var addapp = angular.module('findApp',[]);
+var addapp = angular.module('findAddressApp',[]);
 
 addapp.controller('findControl', function($scope, $http){
     $scope.initMap = function () {

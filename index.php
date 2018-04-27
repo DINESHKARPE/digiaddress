@@ -8,23 +8,21 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXtUgIJI39fpYsM2y2FwAs0KynuS_qmP8"/>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXtUgIJI39fpYsM2y2FwAs0KynuS_qmP8">
+    </script>
 
     <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-
     <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 
-    <script src="js/functionality.js"/>
+    <script src="js/app.js"/>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-
-    <title>Digital Address</title>
 </head>
+
 <body ng-app="digitalAddressApp" ng-controller="digiAddressGenerator">
 
 <div class="container">
@@ -38,6 +36,7 @@
                 </div>
                 <div class="extra-padding">
 
+                    <!-- geocodeAddress(address,'state ') invoked app.js function geocodeAddress after lost focus -->
                     <form ng-submit="processForm()" class="custom-form">
                             <div class="form-group input-group-sm">
                                 <label for="state">State</label>
